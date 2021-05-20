@@ -1,7 +1,4 @@
-#include <iostream>
 #include "ContactClass.hpp"
-
-#include <stdio.h>
 
 int	check_index(std::string input, int nb)
 {
@@ -9,53 +6,53 @@ int	check_index(std::string input, int nb)
 	{
 		if (nb > 0)
 			return (0);
-		std::cout << "This contact is empty. Please select an available index : ";
+		std::cout << "This contact is empty.";
 	}
 	else if (input == "1")
 	{
 		if (nb > 1)
 			return (1);
-		std::cout << "This contact is empty. Please select an available index : ";
+		std::cout << "This contact is empty.";
 	}
 	else if (input == "2")
 	{
 		if (nb > 2)
 			return (2);
-		std::cout << "This contact is empty. Please select an available index : ";
+		std::cout << "This contact is empty.";
 	}
 	else if (input == "3")
 	{
 		if (nb > 3)
 			return (3);
-		std::cout << "This contact is empty. Please select an available index : ";
+		std::cout << "This contact is empty.";
 	}
 	else if (input == "4")
 	{
 		if (nb > 4)
 			return (4);
-		std::cout << "This contact is empty. Please select an available index : ";
-
+		std::cout << "This contact is empty.";
 	}
 	else if (input == "5")
 	{
 		if (nb > 5)
 			return (5);
-		std::cout << "This contact is empty. Please select an available index : ";
+		std::cout << "This contact is empty.";
 	}
 	else if (input == "6")
 	{
 		if (nb > 6)
 			return (6);
-		std::cout << "This contact is empty. Please select an available index : ";
+		std::cout << "This contact is empty.";
 	}
 	else if (input == "7")
 	{
 		if (nb > 7)
 			return (7);
-		std::cout << "This contact is empty. Please select an available index : ";
+		std::cout << "This contact is empty.";
 	}
 	else
-		std::cout << input <<  " : is not a valid entry. Please select an index (from 0 to 7): " ;
+		std::cout << "\"" << input <<  "\" is not a valid entry.";
+	std::cout << " Please select an index from 0 to " << nb - 1 << ": " ;
 	return (-1);
 }
 
@@ -65,13 +62,21 @@ void	search_contact(Contact phonebook[8], int nb)
 	int			check;
 	std::string input = "";
 
+	std::cout << "*********************************************" << std::endl;
+	std::cout << "|"
+				<< std::setw(10) << "Index" << "|"
+				<< std::setw(10) << "First name" << "|"
+				<< std::setw(10) << "Last Name" << "|"
+				<< std::setw(10) << "Login" << "|"
+				<< std::endl;
 	i = 0;
 	while (i < nb)
 	{
 		phonebook[i].list_contact(i);
 		i++;
 	}
-	std::cout << "Index wanted: ";
+	std::cout << "*********************************************" <<std::endl;
+	std::cout << "Please select an index: ";
 	check = -1;
 	while (check < 0)
 	{
@@ -83,7 +88,6 @@ void	search_contact(Contact phonebook[8], int nb)
 	}
 	phonebook[check].print_contact();
 }
-
 
 void	add_contact(Contact *c)
 {
@@ -99,11 +103,11 @@ int main()
 	nb = 0;
 	while (input != "EXIT" && std::cin.eof() != 1)
 	{
-		std::cout << "phonebook > ";
+		std::cout << "phonebook> ";
 		std::getline(std::cin, input);
 		if (input == "ADD")
 		{
-			if (nb + 1  >  7)
+			if (nb + 1 >  8)
 				std::cout << "Phonebook is full - already 8 contacts" << std::endl;
 			else
 			{	

@@ -1,4 +1,3 @@
-#include <iostream>
 #include "ContactClass.hpp"
 
 Contact::Contact(void): _first_name(""), _last_name(""), _nickname(""), _login(""), _address(""), _email_address(""), _phone_number(""), _birthday_date(""), _favorite_meal(""), _underwear_color(""), _darkest_secret("")
@@ -53,12 +52,21 @@ void	Contact::set_contact(void)
 	std::getline(std::cin, this->_darkest_secret);
 }
 
+std::string Contact::truncate_string(std::string str, size_t size)
+{
+	if (str.length() > size)
+		str = str.substr(0, size - 1) + ".";
+	return (str);
+}
+
 void	Contact::list_contact(int nb) const
 {
-	std::cout << nb << "|";
-	std::cout <<  this->_first_name << "|";
-	std::cout << this->_last_name << "|";
-	std::cout << this->_login << std::endl;
+	std::cout << "|"
+			<< std::setw(10) << nb << "|"
+			<< std::setw(10) << truncate_string(get_first_name(), 10) << "|"
+			<< std::setw(10) << truncate_string(get_last_name(), 10) << "|"
+			<< std::setw(10) << truncate_string(get_login(), 10) << "|"
+			<< std::endl;
 }
 
 void	Contact::print_contact(void) const
@@ -76,59 +84,17 @@ void	Contact::print_contact(void) const
 	std::cout << "Darkest secret: " << this->_darkest_secret << std::endl;
 }
 
-
-
 std::string Contact::get_first_name(void) const
 {
-	return this->_first_name ;
+	return this->_first_name;
 }
 
 std::string Contact::get_last_name(void) const
 {
-	return this->_last_name ;
-}
-
-std::string Contact::get_nickname(void) const
-{
-	return this->_nickname ;
+	return this->_last_name;
 }
 
 std::string Contact::get_login(void) const
 {
-	return this->_login ;
-}
-
-std::string Contact::get_address(void) const
-{
-	return this->_address ;
-}
-
-std::string Contact::get_email_address(void) const
-{
-	return this->_email_address ;
-}
-
-std::string Contact::get_phone_number(void) const
-{
-	return this->_phone_number ;
-}
-
-std::string Contact::get_birthday_date(void) const
-{
-	return this->_birthday_date ;
-}
-
-std::string Contact::get_favorite_meal(void) const
-{
-	return this->_favorite_meal ;
-}
-
-std::string Contact::get_underwear_color(void) const
-{
-	return this->_underwear_color ;
-}
-
-std::string Contact::get_darkest_secret(void) const
-{
-	return this->_darkest_secret ;
+	return this->_login;
 }
