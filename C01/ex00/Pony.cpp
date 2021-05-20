@@ -1,9 +1,7 @@
 #include "Pony.hpp"
 
-Pony::Pony(std::string name, std::string color)
+Pony::Pony(std::string name, std::string color) : _name(name), _color(color)
 {
-	this->_name = name; 
-	this->_color = color;
 	std::cout << "A " << this->_color << " poney named " << this->_name << " has been created!" << std::endl;
 	return ;
 }
