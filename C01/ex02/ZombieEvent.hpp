@@ -3,15 +3,21 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib> //rand
+#include <ctime> //to initialize randome seed
+#include "Zombie.hpp"
 
 class ZombieEvent
 {
 	public:
-		ZombieEvent();
-		~ZombieEvent();
-		setZombieType();
+		ZombieEvent(void);
+		~ZombieEvent(void);
+		void setZombieType(std::string type);
 		Zombie * newZombie (std::string name);
-		std::string randomChump();
+		void randomChump(void) const;
+
+	private:
+		std::string _zombie_type;
 };
 
 #endif
