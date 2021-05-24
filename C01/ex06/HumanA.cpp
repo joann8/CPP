@@ -1,6 +1,7 @@
 #include "HumanA.hpp"
+#include <ios>
 
-HumanA::HumanA(std::string name, std::string weapon_type) : _name(name), _weapon_type(weapon_type)
+HumanA::HumanA(std::string name, Weapon &weapon) : _name(name), _weapon(weapon)
 {
 	return;
 }
@@ -12,11 +13,6 @@ HumanA::~HumanA(void)
 
 void	HumanA::attack(void) const
 {
-	std::stringstream str;
-
-	str << std::uppercase << this->_name;
-	str << " attacks with his ";
-	str << std::uppercase << this->_weapon_type;
-	std::cout << str.str() << std::endl;
+	std::cout << this->_name << " attacks with his " << this->_weapon.getType() << std::endl;
 	return ;
 }
