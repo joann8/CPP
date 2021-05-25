@@ -3,15 +3,17 @@
 int main()
 {
 	unsigned int tmp;
+	unsigned int tour;
 
-	FragTrap perso1 = FragTrap("Lola");
-	//FragTrap perso = FragTrap("Lola");
-	//FragTrap perso2 = FragTrap(&perso);
-	FragTrap perso2 = FragTrap("Jacob");
+	FragTrap perso1("Rose");
+	FragTrap tmp_frag("Jack");
+	FragTrap &tmp_ref = tmp_frag;
+	FragTrap perso2(tmp_ref);
 
 	std::cout << std::endl << std::endl;
  	srand(time(NULL));
-	while (1)
+	tour = 0;
+	while (tour < 100)
 	{
 		tmp = perso1.meleeAttack(perso2.getName());
 		if (perso2.takeDamage(tmp) == 0)
@@ -44,13 +46,20 @@ int main()
 				break ;
 		std::cout << std::endl;
 	
-		perso1.beRepaired(35);
+		perso1.beRepaired(25);
 		perso1.status();
 		std::cout << std::endl;
-		perso2.beRepaired(40);
+		perso2.beRepaired(10);
 		perso2.status();
 		std::cout << std::endl;
+		tour++;
 	}
+	if (tour == 100)
+	{
+		std::cout << perso1.getName() << " : Damn it! We can call it even... "<< std::endl;
+		std::cout << perso2.getName() << " : .. only till next fight!" << std::endl;
+	}
+
 	std::cout << std::endl << std::endl;
 	return (0);
 }

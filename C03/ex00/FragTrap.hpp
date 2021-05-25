@@ -18,7 +18,7 @@ class FragTrap
 		std::string getName(void) const;
 		unsigned int rangedAttack(std::string const & target) const;
 		unsigned int meleeAttack(std::string const & target) const ;
-		int takeDamage(unsigned int amount);
+		unsigned int takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 		unsigned int vaulthunter_dot_exe(std::string const & target);
 		std::string random_attack(void) const;
@@ -27,13 +27,13 @@ class FragTrap
 	private:
 		unsigned int	_hp;
 		unsigned int	_max_hp;
-		int _ep;
-		int _max_ep;
-		int	_level;
-		std::string _name;
-		int _melee_attack;
-		int _ranged_attack;
-		int _armor_damage_reduction;
+		unsigned int	_ep;
+		unsigned int	_max_ep;
+		unsigned int	_level;
+		std::string		_name;
+		unsigned int	_melee_attack;
+		unsigned int	_ranged_attack;
+		unsigned int	_armor_damage_reduction;
 };
 
 #endif

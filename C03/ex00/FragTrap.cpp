@@ -15,7 +15,7 @@ FragTrap::FragTrap(std::string name) : _hp(100), _max_hp(100), _ep(100), _max_ep
 FragTrap::FragTrap(FragTrap const & src)
 {
 	*this = src;
-	std::cout << "One FragTrap is born from a copy. Welcome to " << this->_name << "!" << std::endl;
+	std::cout << "One FragTrap is born from a copy. Welcome to the new " << this->_name << "!" << std::endl;
 	return ;
 }
 
@@ -27,7 +27,15 @@ FragTrap::~FragTrap(void)
 
 FragTrap & FragTrap::operator=(FragTrap const & src)
 {
-	std::cout << "Assignation operator called on " << this->_name << " from " << src.getName() << std::endl;
+	this->_hp = src._hp;
+	this->_max_hp = src._max_hp;
+	this->_ep = src._ep;
+	this->_max_ep = src._max_ep;
+	this->_level = src._level;
+	this->_name = src._name;
+	this->_ranged_attack = src._ranged_attack;
+	this->_melee_attack = src._melee_attack;
+	this->_armor_damage_reduction = src._armor_damage_reduction;
 	return *this;
 }
 
@@ -51,11 +59,14 @@ unsigned int FragTrap::meleeAttack (std::string const & target) const
 
 unsigned int FragTrap::vaulthunter_dot_exe(std::string const & target)
 {
-	if (this->_ep - 25  >= 0)
+	unsigned int power;
+
+	power = 25;
+	if (this->_ep >= power)
 	{
-		this->_ep = this->_ep - 25;
-		std::cout << this->_name << " : my vault is incredible, take my special \"" << this->random_attack() << "\" attack, " << target << "! (- 25 HP)" << std::endl;
-		return (35);
+		this->_ep = this->_ep - power;
+		std::cout << this->_name << " : Take this special \"" << this->random_attack() << "\" attack, " << target << "! (- " << power << " HP)" << std::endl;
+		return (power);
 	}
 	else
 	{
@@ -64,7 +75,7 @@ unsigned int FragTrap::vaulthunter_dot_exe(std::string const & target)
 	}
 }
 
-int FragTrap::takeDamage (unsigned int amount)
+unsigned int FragTrap::takeDamage (unsigned int amount)
 {
 	if (this->_hp > amount - this->_armor_damage_reduction)
 	{
