@@ -6,12 +6,16 @@ int main()
 	unsigned int tour;
 
 	FragTrap perso1("Rose");
+	perso1.present();
+	std::cout << std::endl;
+
 	FragTrap tmp_frag("Jack");
 	FragTrap &tmp_ref = tmp_frag;
 	FragTrap perso2(tmp_ref);
-
+	perso2.present();
 	std::cout << std::endl << std::endl;
- 	srand(time(NULL));
+ 	
+	srand(time(NULL));
 	tour = 0;
 	while (tour < 100)
 	{

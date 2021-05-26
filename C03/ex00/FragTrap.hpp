@@ -23,8 +23,9 @@ class FragTrap
 		unsigned int vaulthunter_dot_exe(std::string const & target);
 		std::string random_attack(void) const;
 		void status(void) const;
-
-	private:
+		void present(void) const;
+	
+	protected:
 		unsigned int	_hp;
 		unsigned int	_max_hp;
 		unsigned int	_ep;

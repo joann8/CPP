@@ -51,7 +51,7 @@ void FragTrap::present(void) const
 }
 void FragTrap::status(void) const
 {
-	std::cout << "STATUS " << this->_name << ": [ level " << this->_level << " | HP " << this->_hp << "/" << this->_max_hp << " | EP " << this->_ep << "/" << this->_max_ep << " ]" << std::endl;
+	std::cout << "STATUS " << this->_name << "- [ level " << this->_level << " | HP " << this->_hp << "/" << this->_max_hp << " | EP " << this->_ep << "/" << this->_max_ep << " ]" << std::endl;
 	return;
 }
 
@@ -90,7 +90,7 @@ unsigned int FragTrap::takeDamage (unsigned int amount)
 	if (this->_hp > amount - this->_armor_damage_reduction)
 	{
 		this->_hp = this->_hp - amount + this->_armor_damage_reduction;
-		std::cout << this->_name << " : Ouch, that hurts... (" << this->_hp << " / " << this->_max_hp << " HP)" << std::endl;
+		std::cout << this->_name << " : Ouch, that hurts... (" << this->_hp << "/" << this->_max_hp << " HP)" << std::endl;
 		return (1);
 	}
 	else

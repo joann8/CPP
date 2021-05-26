@@ -39,9 +39,19 @@ FragTrap & FragTrap::operator=(FragTrap const & src)
 	return *this;
 }
 
+void FragTrap::present(void) const
+{
+	std::cout << this->_name << " : Hello, I am " << this->_name << ". Here are my characteristics:" << std::endl;
+	std::cout << "   - HP: " << this->_hp << "/" << this->_max_hp << std::endl;
+	std::cout << "   - EP: " << this->_ep << "/" << this->_max_ep << std::endl;
+	std::cout << "   - Level: " << this->_level << std::endl;
+	std::cout << "   - Melee Attack Damage: " << this->_melee_attack << " HP" << std::endl;
+	std::cout << "   - Ranged Attack Damage: " << this->_ranged_attack << " HP" << std::endl;
+	std::cout << "   - Armor damage reduction: " << this->_armor_damage_reduction << " HP" << std::endl;
+}
 void FragTrap::status(void) const
 {
-	std::cout << "STATUS " << this->_name << ": [ level " << this->_level << " | HP " << this->_hp << " / " << this->_max_hp << " | EP " << this->_ep << " / " << this->_max_ep << " ]" << std::endl;
+	std::cout << "STATUS " << this->_name << "- [ level " << this->_level << " | HP " << this->_hp << "/" << this->_max_hp << " | EP " << this->_ep << "/" << this->_max_ep << " ]" << std::endl;
 	return;
 }
 
@@ -65,7 +75,7 @@ unsigned int FragTrap::vaulthunter_dot_exe(std::string const & target)
 	if (this->_ep >= power)
 	{
 		this->_ep = this->_ep - power;
-		std::cout << this->_name << " : Take this special \"" << this->random_attack() << "\" attack, " << target << "! (- " << power << " HP)" << std::endl;
+		std::cout << this->_name << " : Take this special \"" << this->random_attack() << "\" attack, " << target << "! (-" << power << " HP)" << std::endl;
 		return (power);
 	}
 	else
@@ -80,7 +90,7 @@ unsigned int FragTrap::takeDamage (unsigned int amount)
 	if (this->_hp > amount - this->_armor_damage_reduction)
 	{
 		this->_hp = this->_hp - amount + this->_armor_damage_reduction;
-		std::cout << this->_name << " : Ouch, that hurts... (" << this->_hp << " / " << this->_max_hp << " HP)" << std::endl;
+		std::cout << this->_name << " : Ouch, that hurts... (" << this->_hp << "/" << this->_max_hp << " HP)" << std::endl;
 		return (1);
 	}
 	else
