@@ -51,7 +51,7 @@ void FragTrap::present(void) const
 }
 void FragTrap::status(void) const
 {
-	std::cout << "STATUS " << this->_name << "- [ level " << this->_level << " | HP " << this->_hp << "/" << this->_max_hp << " | EP " << this->_ep << "/" << this->_max_ep << " ]" << std::endl;
+	std::cout << "STATUS " << this->_name << " - [ level " << this->_level << " | HP " << this->_hp << "/" << this->_max_hp << " | EP " << this->_ep << "/" << this->_max_ep << " ]" << std::endl;
 	return;
 }
 
@@ -103,10 +103,10 @@ unsigned int FragTrap::takeDamage (unsigned int amount)
 
 void FragTrap::beRepaired (unsigned int amount)
 {
-	if (this->_hp +  amount <= 100)
+	if (this->_hp +  amount <= this->_max_hp)
 		this->_hp = this->_hp + amount;
 	else
-		this->_hp = 100;
+		this->_hp = this->_max_hp;
 	std::cout <<  this->_name << " : Taking back some energy! (+ " << amount << " HP)" << std::endl;
 	return ;
 }

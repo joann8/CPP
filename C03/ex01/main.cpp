@@ -47,14 +47,16 @@ int main()
 				break ;
 		std::cout << std::endl;
 		
-		perso1.beRepaired(25);
+		perso1.status();
+		perso1.beRepaired(250);
 		perso1.status();
 		std::cout << std::endl;
+		
+		perso2.status();
 		perso2.beRepaired(10);
 		perso2.status();
 		std::cout << std::endl;
 		tour++;
-		//perso2.vaulthunter_dot_exe(perso2.getName()); 
 	}
 	if (tour == 100)
 	{
