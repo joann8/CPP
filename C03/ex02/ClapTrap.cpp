@@ -49,6 +49,7 @@ void ClapTrap::present(void) const
 	std::cout << "   - Ranged Attack Damage: " << this->_ranged_attack << " HP" << std::endl;
 	std::cout << "   - Armor damage reduction: " << this->_armor_damage_reduction << " HP" << std::endl;
 }
+
 void ClapTrap::status(void) const
 {
 	std::cout << "STATUS " << this->_name << "- [ level " << this->_level << " | HP " << this->_hp << "/" << this->_max_hp << " | EP " << this->_ep << "/" << this->_max_ep << " ]" << std::endl;
@@ -58,5 +59,40 @@ void ClapTrap::status(void) const
 std::string ClapTrap::getName(void) const
 {
 	return this->_name;
+}
+
+void ClapTrap::beRepaired (unsigned int amount)
+{
+	if (this->_hp +  amount <= 100)
+		this->_hp = this->_hp + amount;
+	else
+		this->_hp = 100;
+	return ;
+}
+
+unsigned int ClapTrap::takeDamage (unsigned int amount)
+{
+	if (this->_hp > amount - this->_armor_damage_reduction)
+	{
+		this->_hp = this->_hp - amount + this->_armor_damage_reduction;
+		return (1);
+	}
+	else
+	{
+		this->_hp = 0;
+		return (0);
+	}
+}
+
+unsigned int ClapTrap::rangedAttack (std::string const & target) const
+{
+	(void) target;
+	return this->_ranged_attack;
+}
+	
+unsigned int ClapTrap::meleeAttack (std::string const & target) const
+{
+	(void) target;
+	return this->_melee_attack ;
 }
 

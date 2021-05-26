@@ -58,13 +58,32 @@ FragTrap & FragTrap::operator=(FragTrap const & src)
 unsigned int FragTrap::rangedAttack (std::string const & target) const
 {
 	std::cout << this->_name << " : Take this ranged attack, " << target << "! (-" << this->_ranged_attack << " HP)" << std::endl;
-	return this->_ranged_attack;
+	return this->ClapTrap::rangedAttack(target);
 }
 	
 unsigned int FragTrap::meleeAttack (std::string const & target) const
 {
 	std::cout << this->_name << " : Take this melee attack, " << target << "! (-" << this->_melee_attack << " HP)" << std::endl;
-	return this->_melee_attack ;
+	return this->ClapTrap::meleeAttack(target) ;
+}
+
+unsigned int FragTrap::takeDamage (unsigned int amount)
+{
+	unsigned int res;
+
+	res = this->ClapTrap::takeDamage(amount);
+	if (res == 1)
+		std::cout << this->_name << " : Ouch, that hurts... (" << this->_hp << "/" << this->_max_hp << " HP)" << std::endl;
+	else
+		std::cout << this->_name << " died. This FR4G-TP was not strong enough" << std::endl;
+	return (res);
+}
+
+void FragTrap::beRepaired (unsigned int amount)
+{
+	this->ClapTrap::beRepaired(amount);
+	std::cout <<  this->_name << " : Taking back some energy! (+ " << amount << " HP)" << std::endl;
+	return ;
 }
 
 unsigned int FragTrap::vaulthunter_dot_exe(std::string const & target)
@@ -83,32 +102,6 @@ unsigned int FragTrap::vaulthunter_dot_exe(std::string const & target)
 		std::cout << this->_name << " : I could use a special attack from my vault to attack you, " << target << ", but you're are lucky I don't have enough EP! (" << this->_ep << " EP left)" << std::endl;
 		return (0);
 	}
-}
-
-unsigned int FragTrap::takeDamage (unsigned int amount)
-{
-	if (this->_hp > amount - this->_armor_damage_reduction)
-	{
-		this->_hp = this->_hp - amount + this->_armor_damage_reduction;
-		std::cout << this->_name << " : Ouch, that hurts... (" << this->_hp << "/" << this->_max_hp << " HP)" << std::endl;
-		return (1);
-	}
-	else
-	{
-		this->_hp = 0;
-		std::cout << this->_name << " died. This FR4G-TP was not strong enough" << std::endl;
-		return (0);
-	}
-}
-
-void FragTrap::beRepaired (unsigned int amount)
-{
-	if (this->_hp +  amount <= 100)
-		this->_hp = this->_hp + amount;
-	else
-		this->_hp = 100;
-	std::cout <<  this->_name << " : Taking back some energy! (+ " << amount << " HP)" << std::endl;
-	return ;
 }
 
 std::string FragTrap::random_attack(void) const

@@ -58,44 +58,37 @@ ScavTrap & ScavTrap::operator=(ScavTrap const & src)
 unsigned int ScavTrap::rangedAttack (std::string const & target) const
 {
 	std::cout << this->_name << " : Here is my ranged attack, " << target << "! (-" << this->_ranged_attack << " HP)" << std::endl;
-	return this->_ranged_attack;
+	return this->ClapTrap::rangedAttack(target);
 }
 	
 unsigned int ScavTrap::meleeAttack (std::string const & target) const
 {
 	std::cout << this->_name << " : Here is my melee attack, " << target << "! (-" << this->_melee_attack << " HP)" << std::endl;
-	return this->_melee_attack ;
+	return this->ClapTrap::meleeAttack(target) ;
+}
+
+unsigned int ScavTrap::takeDamage (unsigned int amount)
+{
+	unsigned int res;
+
+	res = this->ClapTrap::takeDamage(amount);
+	if (res == 1)
+		std::cout << this->_name << " : Touché... (" << this->_hp << "/" << this->_max_hp << " HP)" << std::endl;
+	else
+		std::cout << this->_name << " died. This SCAV-TP was not strong enough" << std::endl;
+	return (res);
+}
+
+void ScavTrap::beRepaired (unsigned int amount)
+{
+	this->ClapTrap::beRepaired(amount);
+	std::cout <<  this->_name << " : Drinking a redbull! (+ " << amount << " HP)" << std::endl;
+	return ;
 }
 
 void ScavTrap::challengeNewcomer(void)
 {
 	std::cout << this->_name << " : Hey you! I dare you to win \"" << this->random_challenge() << "\" challenge!" << std::endl;
-}
-
-unsigned int ScavTrap::takeDamage (unsigned int amount)
-{
-	if (this->_hp > amount - this->_armor_damage_reduction)
-	{
-		this->_hp = this->_hp - amount + this->_armor_damage_reduction;
-		std::cout << this->_name << " : Touché... (" << this->_hp << "/" << this->_max_hp << " HP)" << std::endl;
-		return (1);
-	}
-	else
-	{
-		this->_hp = 0;
-		std::cout << this->_name << " died. This SCAV-TP was not strong enough" << std::endl;
-		return (0);
-	}
-}
-
-void ScavTrap::beRepaired (unsigned int amount)
-{
-	if (this->_hp +  amount <= this->_max_hp)
-		this->_hp = this->_hp + amount;
-	else
-		this->_hp = this->_max_hp;
-	std::cout <<  this->_name << " : Drinking a redbull! (+ " << amount << " HP)" << std::endl;
-	return ;
 }
 
 std::string ScavTrap::random_challenge(void) const
