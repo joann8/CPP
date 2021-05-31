@@ -51,7 +51,6 @@ int main()
 	me->attack(a);
 	std::cout << *me;
 	me->attack(a);
-	
 
 	return 0;
 }
