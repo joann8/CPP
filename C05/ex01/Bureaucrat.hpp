@@ -8,6 +8,10 @@
 #define LOW_GRADE 150
 #define HIGH_GRADE 1
 
+#include "Form.hpp"
+
+class Form; 
+
 class Bureaucrat
 {
 	class GradeTooHighException : public std::exception
@@ -33,6 +37,7 @@ class Bureaucrat
 		
 		void upgrade(void);
 		void downgrade(void);
+		void signForm(Form & form);
 
 	private:
 		Bureaucrat(void);
