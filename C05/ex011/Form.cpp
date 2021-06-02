@@ -10,11 +10,6 @@ const char* Form::GradeTooLowException::what() const throw()
 	return "this form requires an higher grade";
 }
 
-const char* Form::FormNotSigned::what() const throw()
-{
-	return "this form is not signed yet";
-}
-
 const char* Form::FormAlreadySigned::what() const throw()
 {
 	return "this form is already signed";
@@ -81,15 +76,6 @@ void Form::beSigned(const Bureaucrat & b)
 	else
 		this->_signed = true;
 	return;
-}
-
-void Form::checkFormExec(const Bureaucrat & b) const
-{
-	if (this->_signed == false)
-		throw Form::FormNotSigned();
-	else if (this->_grade_for_sign < b.getGrade())
-		throw Form::GradeTooLowException();
-	return ;
 }
 
 std::ostream & operator<<(std::ostream & out, Form const & src)

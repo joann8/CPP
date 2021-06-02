@@ -20,21 +20,12 @@ class Form
 				virtual const char * what() const throw();
 		};
 		
-		class FormNotSigned : public std::exception
-		{
-			public:
-				virtual const char * what() const throw();
-		};
-		
 		class FormAlreadySigned : public std::exception
 		{
 			public:
 				virtual const char * what() const throw();
 		};
 	
-
-	
-
 		Form(std::string const & name, unsigned int grade_for_sign, unsigned int grade_for_execute);
 		Form(Form const & src);
 		virtual ~Form(void);
@@ -46,7 +37,6 @@ class Form
 		bool getSignedStatus(void) const;
 		
 		void beSigned(const Bureaucrat & b);
-		virtual void execute(Bureaucrat const & executor) const = 0;
 		void checkFormExec(const Bureaucrat & executor) const;
 
 	private:
@@ -55,8 +45,6 @@ class Form
 		bool _signed;
 		unsigned int _grade_for_sign;
 		unsigned int _grade_for_execute;
-
-
 };
 
 std::ostream & operator<<(std::ostream & out, Form const & src);
