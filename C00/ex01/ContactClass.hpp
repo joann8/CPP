@@ -13,6 +13,10 @@ class Contact
 		void	set_contact(void) ;
 		void	print_contact(void) const;
 		void	list_contact(int nb) const;
+		std::string	get_first_name(void) const;
+		std::string	get_last_name(void) const;
+		std::string	get_login(void) const;
+		static std::string truncate_string(std::string, size_t size);
 
 	private:
 		std::string	_first_name;
@@ -26,10 +30,6 @@ class Contact
 		std::string	_favorite_meal;
 		std::string	_underwear_color;
 		std::string	_darkest_secret;
-		std::string	get_first_name(void) const;
-		std::string	get_last_name(void) const;
-		std::string	get_login(void) const;
-		static std::string truncate_string(std::string, size_t size);
 };
 
 #endif
