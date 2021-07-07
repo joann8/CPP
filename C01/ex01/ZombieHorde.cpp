@@ -19,13 +19,13 @@ Zombie *zombieHorde(int N, std::string name)
 	
 	Zombie *horde = new Zombie[N];
 	std::cout << std::endl;
-	
+
 	srand(time(NULL));
-	horde[0] = Zombie(name);
+	horde[0].set_name(name);
 	int i = 1;
 	while (i < N)
 	{
-		horde[i] = Zombie(randomName());
+		horde[i].set_name(randomName());
 		i++;
 	}
 	return horde;

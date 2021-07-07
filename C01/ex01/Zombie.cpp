@@ -24,3 +24,9 @@ void Zombie::annonce()
 	std::cout << "<" << this->_name << "> BraiiiiiiiinzzzZ ..." << std::endl;
 	return ;
 }
+
+void Zombie::set_name(std::string name)
+{
+	this->_name = name;
+	return;
+}
