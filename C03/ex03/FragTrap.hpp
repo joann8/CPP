@@ -1,23 +1,22 @@
 #ifndef FRAGTRAP_HPP
 #define FRAGTRAP_HPP
 
+#include <iostream>
+#include <string>
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap 
 {
 	public:
-		FragTrap(void);
 		FragTrap(std::string name);
 		FragTrap(FragTrap const & src);
-		FragTrap & operator=(FragTrap const & src);
 		~FragTrap(void);
-
-		unsigned int rangedAttack(std::string const & target) const;
-		unsigned int meleeAttack(std::string const & target) const ;
-		unsigned int takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
-		unsigned int vaulthunter_dot_exe(std::string const & target);
-		std::string random_attack(void) const;
+		FragTrap & operator=(FragTrap const & src);
+		
+		void highFivesGuys(void) const;
+	
+	protected:
+		FragTrap(void);
 };
 
 #endif

@@ -15,7 +15,7 @@ class ClapTrap
 		std::string getName(void) const;
 		unsigned int getAttack(void) const;
 		unsigned int getHP(void) const;
-		void attack(std::string const & target);
+		virtual void attack(std::string const & target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 		void present(void) const;
