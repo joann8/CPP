@@ -1,34 +1,31 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void) 
+ScavTrap::ScavTrap(void) : ClapTrap::ClapTrap() 
 {
+	std::cout << "One defaut ScavTrap is born" << std::endl;
 	this->ClapTrap::_hp = 100;
 	this->ClapTrap::_max_hp = 100;
 	this->ClapTrap::_ep = 50;
 	this->ClapTrap::_max_ep = 50;
-	this->ClapTrap::_level = 1;
-	this->ClapTrap::_ranged_attack = 15;
-	this->ClapTrap::_melee_attack = 20;
-	this->ClapTrap::_armor_damage_reduction = 3;
-	std::cout << "One defaut ScavTrap is born" << std::endl;
+	this->ClapTrap::_attack = 20;
+	this->ClapTrap::_type = "ScavTrap";
+	
 	return ;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap::ClapTrap(name) 
 {
+	std::cout << "One ScavTrap is born. Welcome to " << this->_name << "!" << std::endl;
 	this->ClapTrap::_hp = 100;
 	this->ClapTrap::_max_hp = 100;
 	this->ClapTrap::_ep = 50;
 	this->ClapTrap::_max_ep = 50;
-	this->ClapTrap::_level = 1;
-	this->ClapTrap::_ranged_attack = 15;
-	this->ClapTrap::_melee_attack = 20;
-	this->ClapTrap::_armor_damage_reduction = 3;
-	std::cout << "One ScavTrap is born. Welcome to " << this->_name << "!" << std::endl;
+	this->ClapTrap::_attack = 20;
+	this->ClapTrap::_type = "ScavTrap";
 	return ;
 }
 
-ScavTrap::ScavTrap(ScavTrap const & src) : ClapTrap::ClapTrap(src)
+ScavTrap::ScavTrap(ScavTrap const & src)
 {
 	*this = src;
 	std::cout << "One ScavTrap is born from a copy. Welcome to the new " << this->_name << "!" << std::endl;
@@ -43,56 +40,25 @@ ScavTrap::~ScavTrap(void)
 
 ScavTrap & ScavTrap::operator=(ScavTrap const & src)
 {
-	this->_hp = src._hp;
-	this->_max_hp = src._max_hp;
-	this->_ep = src._ep;
-	this->_max_ep = src._max_ep;
-	this->_level = src._level;
-	this->_name = src._name;
-	this->_ranged_attack = src._ranged_attack;
-	this->_melee_attack = src._melee_attack;
-	this->_armor_damage_reduction = src._armor_damage_reduction;
+	this->_hp = src.ClapTrap::_hp;
+	this->_max_hp = src.ClapTrap::_max_hp;
+	this->_ep = src.ClapTrap::_ep;
+	this->_max_ep = src.ClapTrap::_max_ep;
+	this->_name = src.ClapTrap::_name;
+	this->_attack = src.ClapTrap::_attack;
+	this->_type = src.ClapTrap::_type;
 	return *this;
 }
 
-unsigned int ScavTrap::rangedAttack (std::string const & target) const
+void ScavTrap::attack (std::string const & target) 
 {
-	std::cout << this->_name << " : Here is my ranged attack, " << target << "! (-" << this->_ranged_attack << " HP)" << std::endl;
-	return this->ClapTrap::rangedAttack(target);
-}
-	
-unsigned int ScavTrap::meleeAttack (std::string const & target) const
-{
-	std::cout << this->_name << " : Here is my melee attack, " << target << "! (-" << this->_melee_attack << " HP)" << std::endl;
-	return this->ClapTrap::meleeAttack(target) ;
-}
-
-unsigned int ScavTrap::takeDamage (unsigned int amount)
-{
-	unsigned int res;
-
-	res = this->ClapTrap::takeDamage(amount);
-	if (res == 1)
-		std::cout << this->_name << " : Touché... (" << this->_hp << "/" << this->_max_hp << " HP)" << std::endl;
-	else
-		std::cout << this->_name << " died. This SCAV-TP was not strong enough" << std::endl;
-	return (res);
-}
-
-void ScavTrap::beRepaired (unsigned int amount)
-{
-	this->ClapTrap::beRepaired(amount);
-	std::cout <<  this->_name << " : Drinking a redbull! (+ " << amount << " HP)" << std::endl;
+	std::cout << this->_name << " (" << this->_type << ") : fear my aaaaattack, " << target << "! (-" << this->_attack << " points of damages)" << std::endl;
 	return ;
 }
 
-void ScavTrap::challengeNewcomer(void)
+void ScavTrap::guardGate(void) const
 {
-	std::cout << this->_name << " : Hey you! I dare you to win \"" << this->random_challenge() << "\" challenge!" << std::endl;
+	std::cout << this->_name << " (" << this->_type << ") : I have enterred guard mode." << std::endl;
+	return;
 }
-
-std::string ScavTrap::random_challenge(void) const
-{
-	std::string challenge[] =	{"Paper, Rock, Cissors", "I have in my suitcase", "Drink or Die", "Karaoke", "Shittiest flute ever"};
-	return challenge[rand() % 5];
-}
+	

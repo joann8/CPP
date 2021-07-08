@@ -3,8 +3,6 @@
 
 #include <iostream>
 #include <string>
-#include <ctime>
-#include <cstdlib>
 
 class ClapTrap
 {
