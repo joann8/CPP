@@ -1,4 +1,4 @@
-NAME = karenfilter
+NAME = karenFilter
 SRCS = main.cpp Karen.cpp
 OBJS = ${SRCS:.cpp=.o}
 CC = clang++

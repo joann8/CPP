@@ -29,6 +29,7 @@ int main()
 	
 	std::cout << "***Launch ZombieHorde - n KO***" << std::endl;
 	launch_ZombieHorde(-32);
+	std::cout << "*******************************" << std::endl << std::endl;
 	launch_ZombieHorde(0);
 	std::cout << "*******************************" << std::endl << std::endl;
 	

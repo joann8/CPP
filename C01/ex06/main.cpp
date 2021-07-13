@@ -11,36 +11,39 @@ int main(int ac, char **av)
 		return (1);
 	}
 
-	filter["debug"] = 1;
-	filter["info"] = 2;
-	filter["warning"] = 3;
-	filter["error"] = 4;
+	filter["DEBUG"] = 1;
+	filter["INFO"] = 2;
+	filter["WARNING"] = 3;
+	filter["ERROR"] = 4;
 
 	switch (filter[av[1]])
 	{	
 		case 1:
 		{	std::cout << "[DEBUG]" << std::endl;
 			karen.complain("debug");
+			std::cout << std::endl;
 		}
 		case 2:
 		{
 			std::cout << "[INFO]" << std::endl;
 			karen.complain("info");
+			std::cout << std::endl;
 		}
 		case 3:
 		{
 			std::cout << "[WARNING]" << std::endl;
 			karen.complain("warning");
+			std::cout << std::endl;
 		}
 		case 4:
 		{
 			std::cout << "[ERROR]" << std::endl;
 			karen.complain("error");
+			std::cout << std::endl;
 			break ;
 		}
 		default:
 		{
-			std::cout << "[NIMP]" << std::endl;
 			std::cout << "[ Probablement plainte de problèmes insignifiants ]" << std::endl;
 		}
 	}	

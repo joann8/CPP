@@ -2,14 +2,12 @@
 
 Karen::Karen(void) 
 {
-	std::cout << "**A new Karen is born**" << std::endl;
 	return;
 }
 
 
 Karen::~Karen()
 {
-	std::cout << "**A Karen died**" << std::endl;
 	return ;
 }
 

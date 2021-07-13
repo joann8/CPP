@@ -9,7 +9,6 @@ class Karen;
 
 typedef void(Karen::*f_ptr)();
 
-
 class Karen
 {
 	public:

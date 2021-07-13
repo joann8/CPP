@@ -6,7 +6,6 @@ Karen::Karen(void)
 	return;
 }
 
-
 Karen::~Karen()
 {
 	std::cout << "**A Karen died**" << std::endl;

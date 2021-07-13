@@ -1,11 +1,15 @@
 #include <iostream>
+#include <istream>
+#include <ostream>
+#include <streambuf>
 #include <string>
 #include <fstream>
 
 static int	manage_file(std::string file_name, std::string s1, std::string s2 )
 {
 	std::ifstream  ifs(file_name.c_str());
-	if (!ifs)
+	
+	if (!ifs.is_open())
 	{
 		std::cerr << "Error while opening the file." << std::endl;
 		return (1);
@@ -16,7 +20,7 @@ static int	manage_file(std::string file_name, std::string s1, std::string s2 )
 	if (!ofs)
 	{
 		ifs.close();
-		std::cerr << "Error while creatung the new file." << std::endl;
+		std::cerr << "Error while creating the new file." << std::endl;
 		return (1);
 	}
 
@@ -38,7 +42,7 @@ static int	manage_file(std::string file_name, std::string s1, std::string s2 )
 }
 
 
-int main(int ac, char **av)//pbm dossier?
+int main(int ac, char **av)
 {
 	if (ac != 4)
 	{
