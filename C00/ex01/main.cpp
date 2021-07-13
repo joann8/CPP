@@ -68,7 +68,7 @@ void	search_contact(Contact phonebook[8], int nb)
 				<< std::setw(10) << "Index" << "|"
 				<< std::setw(10) << "First name" << "|"
 				<< std::setw(10) << "Last Name" << "|"
-				<< std::setw(10) << "Login" << "|"
+				<< std::setw(10) << "Nickname" << "|"
 				<< std::endl;
 	i = 0;
 	while (i < nb)

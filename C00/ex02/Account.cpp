@@ -11,7 +11,7 @@ Account::Account(int deposit): _accountIndex(Account::_nbAccounts), _amount(depo
 	Account::_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex << ";";
 	std::cout << "amount:" << this->_amount << ";";
-	std::cout << "closed" << std::endl;
+	std::cout << "created" << std::endl;
 	Account::_nbAccounts++;
 	Account::_totalAmount += deposit;
 	return;
@@ -114,7 +114,6 @@ bool	Account::makeWithdrawal( int withdrawal )
 
 int		Account::checkAmount( void ) const
 {
-//	this->_nbCheckAmount++;
 	return (this->_amount);
 }
 
