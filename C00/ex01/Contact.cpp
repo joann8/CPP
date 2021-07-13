@@ -1,4 +1,4 @@
-#include "ContactClass.hpp"
+#include "Contact.hpp"
 
 Contact::Contact(void): _first_name(""), _last_name(""), _nickname(""), _login(""), _address(""), _email_address(""), _phone_number(""), _birthday_date(""), _favorite_meal(""), _underwear_color(""), _darkest_secret("")
 {

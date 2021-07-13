@@ -1,4 +1,5 @@
-#include "ContactClass.hpp"
+#include "Contact.hpp"
+#include "Phonebook.hpp"
 
 int	check_index(std::string input, int nb)
 {
@@ -96,9 +97,9 @@ void	add_contact(Contact *c)
 
 int main()
 {
-	Contact		phonebook[8];
-	std::string	input = "";
+	Phonebook	my_phonebook;
 	int			nb;
+	std::string	input = "";
 
 	nb = 0;
 	while (input != "EXIT" && std::cin.eof() != 1)
@@ -111,7 +112,7 @@ int main()
 				std::cout << "Phonebook is full - already 8 contacts" << std::endl;
 			else
 			{	
-				add_contact(&phonebook[nb]);
+				add_contact(&(my_phonebook.my_contacts[nb]));
 				nb++;
 			}
 		}
@@ -120,7 +121,7 @@ int main()
 			if (nb == 0)
 				std::cout << "Phonebook is empty" << std::endl;
 			else
-				search_contact(phonebook, nb);
+				search_contact(my_phonebook.my_contacts, nb);
 		}
 	}
 	return (0);
