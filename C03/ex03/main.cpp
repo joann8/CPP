@@ -29,7 +29,7 @@ int main()
 			perso2.status();
 			break;
 		}
-		perso2.beRepaired(20);
+		perso2.beRepaired(1);
 		perso2.status();
 		std::cout << std::endl;
 	
@@ -40,7 +40,7 @@ int main()
 			perso1.status();
 			break;
 		}
-		perso1.beRepaired(1);
+		perso1.beRepaired(15);
 		perso1.status();
 		std::cout << std::endl;
 	}
