@@ -24,7 +24,6 @@ class Character : public ICharacter
 	private:
 		std::string _name;
 		AMateria* _materials[4];
-		int	_mat_usable[4];
 		int	_nb_mat;
 };
 

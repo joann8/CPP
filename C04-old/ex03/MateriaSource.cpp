@@ -2,34 +2,13 @@
 
 MateriaSource::MateriaSource(void) : _nb_mat(0)
 {
-	int i;
-
-	i = 0;
-	while (i < 4)
-	{
-		this->_materials[i] = NULL;
-		i++;
-	}
 	return;
 }
 
 MateriaSource::MateriaSource(MateriaSource const & src)
 {
-	int i;
-
-	i = 0;
-	this->_nb_mat = src._nb_mat;
-	while (i < this->_nb_mat)
-	{
-		this->_materials[i] = src._materials[i]->clone();
-		i++;
-	}
-	while (i < 4)
-	{
-		this->_materials[i] = NULL;
-		i++;
-	}
-	return;
+	*this = src;
+	return ;
 }
 
 MateriaSource & MateriaSource::operator=(MateriaSource const & src)
@@ -47,11 +26,6 @@ MateriaSource & MateriaSource::operator=(MateriaSource const & src)
 	while (i < this->_nb_mat)
 	{
 		this->_materials[i] = src._materials[i]->clone();
-		i++;
-	}
-	while (i < 4)
-	{
-		this->_materials[i] = NULL;
 		i++;
 	}
 	return *this;
@@ -75,7 +49,7 @@ void MateriaSource::learnMateria(AMateria * src)
 {
 	if (src == NULL || this->_nb_mat == 4) 
 		return;
-	this->_materials[this->_nb_mat] = src->clone();
+	this->_materials[this->_nb_mat] = src;
 	this->_nb_mat += 1;
 	return;
 }

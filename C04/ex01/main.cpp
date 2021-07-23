@@ -1,56 +1,63 @@
-#include "AWeapon.hpp"
-#include "PlasmaRifle.hpp"
-#include "PowerFist.hpp"
-#include "LightSaber.hpp"
-#include "Enemy.hpp"
-#include "SuperMutant.hpp"
-#include "RadScorpion.hpp"
-#include "DarkSith.hpp"
-#include "Character.hpp"
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+#include "Brain.hpp"
 
 int main()
 {
-	Character* me = new Character("me");
 
-	std::cout << *me;
+	std::cout << "\n*********************\n Test from subject\n\n";
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
 
-	Enemy* b = new RadScorpion();
+	delete j;//should not create a leak	
+	delete i;
 
-	AWeapon* pr = new PlasmaRifle();
-	AWeapon* pf = new PowerFist();
-
-	me->equip(pr);
-	std::cout << *me;
-	me->equip(pf);
-
-	me->attack(b);
-	std::cout << *me;
-	me->equip(pr);
-	std::cout << *me;
-	me->attack(b);
-	std::cout << *me;
-	me->attack(b);
-	std::cout << *me;
-	std::cout << std::endl;
+	std::cout << "\n*********************\n Test from deep copy\n";
+	std::cout << "(deep copy = allocating values + ressources (heap))\n" << std::endl;
 	
-	Enemy* a = new SuperMutant();
-	Enemy* c = new DarkSith();
-	AWeapon* ls = new LightSaber();
-	me->attack(c);
-	std::cout << *me;
-	me->equip(ls);
-	std::cout << *me;
-	me->attack(c);
-	std::cout << *me;
-	me->attack(c);
-	std::cout << *me;
-	me->attack(a);
-	std::cout << *me;
-	me->attack(a);
-	me->attack(a);
-	me->attack(a);
-	std::cout << *me;
-	me->attack(a);
+	Dog a;
+	Dog b;
+	Dog c(a);
 
-	return 0;
+	b = a;
+
+	std::cout << "Address brain A: " << a.getBrain() << std::endl;
+	std::cout << "Address brain B: " << b.getBrain() << std::endl;
+	std::cout << "Address brain C: " << c.getBrain() << std::endl;
+	
+	std::cout << "\n*********************\n Test Tab 10 animals\n\n";
+
+
+	unsigned int k;
+	unsigned int n;
+
+	std::cout << "Please enter a value for n (1 - 20): ";
+	std::cin >> n;
+	while (n <= 0 || n > 20)
+	{
+		std::cout << "Wrong value" << std::endl;
+		std::cout << "Please enter a value for n (1 - 20): ";
+		std::cin >> n;
+	}
+	const Animal* animal_tab[n];
+	k = 0;
+	while (k < n / 2)
+	{
+		animal_tab[k] = new Dog();
+		k++;
+	}
+	while (k < n)
+	{
+		animal_tab[k] = new Cat();
+		k++;
+	}
+	
+	k = 0;
+	while (k < n)
+	{
+		delete animal_tab[k];
+		k++;
+	}
+	return (0);
 }
