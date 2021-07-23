@@ -1,18 +1,17 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(void) : Form::Form("robotomy request", 72, 45), _target("default")
+RobotomyRequestForm::RobotomyRequestForm(void) : Form::Form("robotomy request", 72, 45, false), _target("default")
 {
 	return;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string const & target) : Form("robotomy request", 72, 45), _target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string const & target) : Form("robotomy request", 72, 45, false), _target(target)
 {
 	return;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src) : Form("robotomy request", 72, 45), _target(src.getTarget())
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src) : Form(src.getName(), src.getGradeForSign(), src.getGradeForExecute(), src.getSignedStatus()), _target(src.getTarget())
 {
-	*this = src;
 	return;
 }
 

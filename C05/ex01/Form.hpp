@@ -36,8 +36,8 @@ class Form
 		Form(void);
 		std::string const _name;
 		bool _signed;
-		unsigned int _grade_for_sign;
-		unsigned int _grade_for_execute;
+		unsigned int const _grade_for_sign;
+		unsigned int const _grade_for_execute;
 
 
 };

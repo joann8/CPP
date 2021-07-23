@@ -27,9 +27,8 @@ Bureaucrat::Bureaucrat(std::string const & name, unsigned int grade)
 	return;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const & src)
+Bureaucrat::Bureaucrat(Bureaucrat const & src) : _name(src.getName()), _grade(src.getGrade())
 {
-	*this = src;
 	return;
 }
 
@@ -90,7 +89,7 @@ void Bureaucrat::executeForm(Form & form)
 	try
 	{
 		form.execute(*this);
-		std::cout << this->_name << " executs " << form.getName() << std::endl;
+		std::cout << this->_name << " executs " << form.getName() <<  std::endl;
 	}
 	catch (std::exception & e)
 	{

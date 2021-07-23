@@ -1,18 +1,17 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(void) : Form::Form("shrubbery creation", 145, 137), _target("default")
+ShrubberyCreationForm::ShrubberyCreationForm(void) : Form::Form("shrubbery creation", 145, 137, false), _target("default")
 {
 	return;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const & target) : Form("shrubbery creation", 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const & target) : Form("shrubbery creation", 145, 137, false), _target(target)
 {
 	return;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & src) : Form("shrubbery creation", 145, 137), _target(src.getTarget())
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & src) : Form(src.getName(), src.getGradeForSign(), src.getGradeForExecute(), src.getSignedStatus()), _target(src.getTarget())
 {
-	*this = src;
 	return;
 }
 

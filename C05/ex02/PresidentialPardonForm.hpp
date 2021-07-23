@@ -6,7 +6,6 @@
 class PresidentialPardonForm : public Form
 {
 	public:
-		PresidentialPardonForm(void);
 		PresidentialPardonForm(std::string const & target);
 		PresidentialPardonForm(PresidentialPardonForm const & src);
 		virtual ~PresidentialPardonForm(void);
@@ -16,6 +15,7 @@ class PresidentialPardonForm : public Form
 		std::string const & getTarget(void) const;
 	
 	private:
+		PresidentialPardonForm(void);
 		std::string const _target;
 };
 

@@ -3,10 +3,12 @@
 
 int main()
 {
-	Bureaucrat Lola("Lola", LOW_GRADE);
-	Bureaucrat Jack("Jack", HIGH_GRADE);
-
 	std::cout << "HIGH_GRADE = " << HIGH_GRADE << " | LOW_GRADE = " << LOW_GRADE << std::endl;
+	Bureaucrat Lola("Lola", LOW_GRADE);
+	std::cout << Lola;
+	Bureaucrat Jack("Jack", HIGH_GRADE);
+	std::cout << Jack;
+
 
 	std::cout << "\n** Test Paperasse **" << std::endl;
 	try
@@ -25,7 +27,7 @@ int main()
 	std::cout << "\n** Test Important Doc **" << std::endl;
 	try
 	{
-		Form Important("Doc", HIGH_GRADE, HIGH_GRADE);
+		Form Important("Important Doc", HIGH_GRADE, HIGH_GRADE);
 		std::cout << Important;
 		Lola.signForm(Important);
 	}
@@ -35,7 +37,7 @@ int main()
 	}
 	try
 	{	
-		Form Important("Doc", HIGH_GRADE, HIGH_GRADE);
+		Form Important("Important Doc", HIGH_GRADE, HIGH_GRADE);
 		std::cout << Important;
 		Jack.signForm(Important);
 		std::cout << Important;
@@ -48,13 +50,13 @@ int main()
 	std::cout << "\n**Test with upgrade **" << std::endl;
 	try
 	{
-		Form Important("Doc", HIGH_GRADE , HIGH_GRADE);
+		Form Important("Important Doc", HIGH_GRADE , HIGH_GRADE);
 		std::cout << Important;
-		Bureaucrat Lola("Lola", HIGH_GRADE + 1);
-		std::cout << Lola;
-		Lola.upgrade();
-		std::cout << Lola;
-		Lola.signForm(Important);
+		Bureaucrat Jackie("Jackie", HIGH_GRADE + 1);
+		std::cout << Jackie;
+		Jackie.upgrade();
+		std::cout << Jackie;
+		Jackie.signForm(Important);
 		std::cout << Important;
 	}
 	catch (std::exception & e)
@@ -65,13 +67,13 @@ int main()
 	std::cout << "\n**Test with downgrade **" << std::endl;
 	try
 	{
-		Form Important("Doc", HIGH_GRADE , HIGH_GRADE);
+		Form Important("Important Doc", HIGH_GRADE , HIGH_GRADE);
 		std::cout << Important;
-		Bureaucrat Lola("Lola", HIGH_GRADE);
-		std::cout << Lola;
-		Lola.downgrade();
-		std::cout << Lola;
-		Lola.signForm(Important);
+		Bureaucrat Albert("Albert", HIGH_GRADE);
+		std::cout << Albert;
+		Albert.downgrade();
+		std::cout << Albert;
+		Albert.signForm(Important);
 		std::cout << Important;
 	}
 	catch (std::exception & e)

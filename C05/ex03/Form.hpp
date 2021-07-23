@@ -33,9 +33,7 @@ class Form
 		};
 	
 
-	
-
-		Form(std::string const & name, unsigned int grade_for_sign, unsigned int grade_for_execute);
+		Form(std::string const & name, unsigned int grade_for_sign, unsigned int grade_for_execute, bool signed_status);
 		Form(Form const & src);
 		virtual ~Form(void);
 		Form & operator=(Form const & src);

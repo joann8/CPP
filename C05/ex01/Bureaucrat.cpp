@@ -27,9 +27,8 @@ Bureaucrat::Bureaucrat(std::string const & name, unsigned int grade)
 	return;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const & src)
+Bureaucrat::Bureaucrat(Bureaucrat const & src) : _name(src.getName()), _grade(src.getGrade()) 
 {
-	*this = src;
 	return;
 }
 
@@ -74,17 +73,17 @@ void Bureaucrat::signForm(Form & form)
 {
 	if (form.getSignedStatus() == true)
 	{
-		std::cout << this->_name << " cannot sign " << form.getName() << " because it is already signed." << std::endl;
+		std::cout << getName() << " cannot sign " << form.getName() << " because it is already signed." << std::endl;
 		return;
 	}
 	if (this->_grade <= form.getGradeForSign())
 	{
-		std::cout << this->_name << " sign " << form.getName() << std::endl;
+		std::cout << getName() << " signs " << form.getName() << std::endl;
 		form.beSigned(*this);
 	}
 	else
 	{
-		std::cout << this->_name << " cannot sign " << form.getName() << " because ";
+		std::cout << getName() << " cannot sign " << form.getName() << " because ";
 		form.beSigned(*this);
 	}
 	return;

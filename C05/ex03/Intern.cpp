@@ -1,5 +1,10 @@
 #include "Intern.hpp"
 
+const char * Intern::FormNotFound::what() const throw()
+{	
+	return "The Intern cannot create that file, the type of form does not exist";
+}
+
 Intern::Intern(void)
 {
 	return;
@@ -35,21 +40,26 @@ Form * Intern::makeForm(std::string form_name, std::string const & form_target)
 		forms[2]->getName() };
 
 	Form *new_form = NULL;
-
-	int i;
-	i = 0;
-	while (i < 3)
+	
+	try
 	{
-		if (form_name == form_names[i])
+		for (int i = 0; i < 3; i++)
 		{
-			new_form = forms[i];
-			std::cout << "Intern creates " << form_name << std::endl;
-		}
-		else
+			if (form_name == form_names[i])
+			{
+				new_form = forms[i];
+				std::cout << "Intern creates " << form_name << std::endl;
+				for (int j = i + 1; j < 3; j++)
+					delete forms[j];
+				return new_form;
+			}
 			delete forms[i];
-		i++;
+		}
+		throw FormNotFound();
 	}
-	if (new_form == NULL)
-		std::cout << "Intern cannot create " <<form_name << ", form does not exist" << std::endl;
-	return new_form;
+	catch (std::exception & e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	return NULL;
 }

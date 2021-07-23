@@ -14,7 +14,7 @@ int main()
 
 	Form *form;
 
-	std::cout << "----> 1 - random <-----" << std::endl;
+	std::cout << "\n----> 1 - random <-----" << std::endl;
 	form = intern.makeForm("random", "Bender");
 	if (form)
 	{
@@ -23,7 +23,7 @@ int main()
 	}
 	delete form;
 
-	std::cout << "----> 2 - Presidential Pardon <-----" << std::endl;
+	std::cout << "\n----> 2 - Presidential Pardon <-----" << std::endl;
 	form = intern.makeForm("presidential pardon", "Bender");
 	if (form)
 	{
@@ -33,7 +33,7 @@ int main()
 		
 	delete form;
 	
-	std::cout << "----> 3 - Shrubbery Creation <-----" << std::endl;
+	std::cout << "\n----> 3 - Shrubbery Creation <-----" << std::endl;
 	form = intern.makeForm("shrubbery creation", "Bender");
 	if (form)
 	{
@@ -43,7 +43,7 @@ int main()
 	
 	delete form;
 	
-	std::cout << "----> 4 - Robotomy request <-----" << std::endl;
+	std::cout << "\n----> 4 - Robotomy request <-----" << std::endl;
 	form = intern.makeForm("robotomy request", "Bender");
 	if (form)
 	{

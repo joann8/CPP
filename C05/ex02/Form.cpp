@@ -25,8 +25,8 @@ Form::Form(void) : _name("default"), _signed(false), _grade_for_sign(LOW_GRADE),
 	return;
 }
 
-Form::Form(std::string const & name, unsigned int grade_for_sign, unsigned int grade_for_execute)
-	: _name(name), _signed(0), _grade_for_sign(grade_for_sign), _grade_for_execute(grade_for_execute)
+Form::Form(std::string const & name, unsigned int grade_for_sign, unsigned int grade_for_execute, bool signed_status)
+	: _name(name), _signed(signed_status), _grade_for_sign(grade_for_sign), _grade_for_execute(grade_for_execute)
 {
 	if (grade_for_sign > LOW_GRADE || grade_for_execute > LOW_GRADE)
 		throw Form::GradeTooLowException();
@@ -35,9 +35,8 @@ Form::Form(std::string const & name, unsigned int grade_for_sign, unsigned int g
 	return;
 }
 
-Form::Form(Form const & src)
+Form::Form(Form const & src) : _name(src.getName()), _signed(src.getSignedStatus()), _grade_for_sign(src.getGradeForSign()), _grade_for_execute(src.getGradeForExecute())
 {
-	*this = src;
 	return;
 }
 
@@ -96,7 +95,7 @@ std::ostream & operator<<(std::ostream & out, Form const & src)
 {
 	std::string status = src.getSignedStatus() ? "signed" : "not signed";
 
-	out << src.getName() << ", form that can be signed by a bureaucrat with grade " << src.getGradeForSign() << " and execute by a bureaucrat with grade " << src.getGradeForExecute() << std::endl << "Status : " << status << std::endl; 
+	out << src.getName() << " - status : " << status << " (sign lvl = "  << src.getGradeForSign() << " | exec lvl = " << src.getGradeForExecute() <<  ")" << std::endl;
 	return out;
 }
 

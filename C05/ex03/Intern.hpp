@@ -12,6 +12,12 @@
 class Intern
 {
 	public:
+		class FormNotFound : public std::exception
+		{
+			public:
+				virtual const char * what() const throw();
+		};
+		
 		Intern(void);
 		Intern(std::string const & name, unsigned int grade);
 		Intern(Intern const & src);
