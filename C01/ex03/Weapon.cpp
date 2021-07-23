@@ -5,7 +5,6 @@ Weapon::Weapon(std::string weapon) : _type(weapon)
 	return;
 }
 
-
 Weapon::~Weapon(void)
 {
 	return;

@@ -41,13 +41,13 @@ DiamondTrap::~DiamondTrap(void)
 
 DiamondTrap & DiamondTrap::operator=(DiamondTrap const & src)
 {
-	this->_hp = src.FragTrap::getHP();
-	this->_max_hp = src.FragTrap::getMaxHP();
-	this->_ep = src.FragTrap::getEP();
-	this->_max_ep = src.ScavTrap::getMaxEP();
-	this->_name = src.ScavTrap::getName();
-	this->_attack = src.ScavTrap::getAttack();
-	this->_type = src.ScavTrap::getType();
+	FragTrap::setHP(src.FragTrap::getHP());
+	FragTrap::setMaxHP(src.FragTrap::getMaxHP());
+	FragTrap::setEP(src.FragTrap::getEP());
+	ScavTrap::setMaxEP(src.ScavTrap::getMaxEP());
+	ScavTrap::setName(src.ScavTrap::getName());
+	ScavTrap::setAttack(src.ScavTrap::getAttack());
+	FragTrap::setType(src.FragTrap::getType());
 	return *this;
 }
 

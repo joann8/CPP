@@ -14,14 +14,14 @@ Fixed::Fixed(Fixed const & src)
 	return ;
 }
 
-Fixed::Fixed(const int i) : _nb(i << Fixed::_bits)
+Fixed::Fixed(const int i) : _nb(i << Fixed::_bits) //valeur en binaire sur 8 bits
 {
 	std::cout << "Int constructor called" << std::endl;
 
 	return ;
 }
 
-Fixed::Fixed(const float f) : _nb(roundf(f * (1 << Fixed::_bits)))
+Fixed::Fixed(const float f) : _nb(roundf(f * (1 << Fixed::_bits))) //sur 8 bits, valeur binaire
 {
 	std::cout << "Float constructor called" << std::endl;
 	return ;
@@ -55,12 +55,12 @@ void Fixed::setRawBits(int const raw)
 
 int Fixed::toInt(void) const
 {
-	return this->_nb >> Fixed::_bits;
+	return this->_nb >> Fixed::_bits; // this value on 8 bits
 }
 
 float Fixed::toFloat(void) const
 {
-	return (float)this->_nb / (1 << Fixed::_bits);
+	return (float)this->_nb / (1 << Fixed::_bits); // / 256
 }
 
 std::ostream & operator<<(std::ostream & output, Fixed const & rhs)

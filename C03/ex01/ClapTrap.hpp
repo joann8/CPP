@@ -35,7 +35,7 @@ class ClapTrap
 		void setName(std::string name);
 		void setType(std::string type);
 	
-		protected:
+	protected:
 		unsigned int	_hp;
 		unsigned int	_max_hp;
 		unsigned int	_ep;

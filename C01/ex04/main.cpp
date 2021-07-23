@@ -1,7 +1,4 @@
 #include <iostream>
-#include <istream>
-#include <ostream>
-#include <streambuf>
 #include <string>
 #include <fstream>
 
@@ -17,7 +14,7 @@ static int	manage_file(std::string file_name, std::string s1, std::string s2 )
 
 	std::string new_file = file_name + ".replace";
 	std::ofstream ofs(new_file.c_str());
-	if (!ofs)
+	if (!ofs.is_open())
 	{
 		ifs.close();
 		std::cerr << "Error while creating the new file." << std::endl;

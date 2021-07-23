@@ -16,15 +16,15 @@ void Karen::complain(std::string level)
 {
 	std::map<std::string, f_ptr> map;
 
-	map["info"] = &Karen::info;
-	map["debug"] = &Karen::debug;
-	map["warning"] = &Karen::warning;
-	map["error"] = &Karen::error;
+	map["INFO"] = &Karen::info;
+	map["DEBUG"] = &Karen::debug;
+	map["WARNING"] = &Karen::warning;
+	map["ERROR"] = &Karen::error;
 
 	if (map[level])
 		(this->*map[level])();
 	else
-		std::cout << "Karen does not know this action." << std::endl;
+		std::cout << "Karen is complaining about something we don't understand." << std::endl;
 	return;
 }
 

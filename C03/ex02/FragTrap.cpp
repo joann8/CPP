@@ -39,6 +39,6 @@ FragTrap & FragTrap::operator=(FragTrap const & src)
 
 void FragTrap::highFivesGuys(void) const
 {
-	std::cout << ClapTrap::getName() << " (" << ClapTrap::getType() << ") : give me some Hive Fives! Guys?" << std::endl;
+	std::cout << ClapTrap::getName() << " (" << getType() << ") : give me some Hive Fives! Guys?" << std::endl;
 	return;
 }

@@ -32,7 +32,7 @@ class ClapTrap
 		void setAttack(unsigned int attack);
 		void setName(std::string name);
 	
-	protected:
+	private:
 		unsigned int	_hp;
 		unsigned int	_max_hp;
 		unsigned int	_ep;

@@ -47,7 +47,7 @@ ClapTrap & ClapTrap::operator=(ClapTrap const & src)
 
 void ClapTrap::attack (std::string const & target) 
 {
-	std::cout << getName() << " (ClapTrap) : Take this attack, " << target << "! (-" << getAttack() << " points of damages)" << std::endl;
+	std::cout << getName() << " (" << getType() << ") : Take this attack, " << target << "! (-" << getAttack() << " points of damages)" << std::endl;
 	return ;
 }
 	

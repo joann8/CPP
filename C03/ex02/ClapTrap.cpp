@@ -34,7 +34,7 @@ ClapTrap::~ClapTrap(void)
 ClapTrap & ClapTrap::operator=(ClapTrap const & src)
 {
 	setHP(src.getHP());
-	setMaxHP(max_hp = src.getMaxHP());
+	setMaxHP(src.getMaxHP());
 	setEP(src.getEP());
 	setMaxEP(src.getMaxEP());
 	setName(src.getName());
@@ -47,7 +47,7 @@ ClapTrap & ClapTrap::operator=(ClapTrap const & src)
 
 void ClapTrap::attack (std::string const & target) 
 {
-	std::cout << getName() << " (ClapTrap) : Take this attack, " << target << "! (-" << getAttack() << " points of damages)" << std::endl;
+	std::cout << getName() << " (" << getType() << ") : Take this attack, " << target << "! (-" << getAttack() << " points of damages)" << std::endl;
 	return ;
 }
 	

@@ -1,12 +1,4 @@
 #include "Zombie.hpp"
-#include <ctime>
-#include <cstdlib>
-
-std::string	randomName(void)
-{
-	std::string	name []= {"R_Bernard", "R_Alicia", "R_Suzy", "R_Annouk", "R_Jacob", "R_Georgie", "R_Samuel", "R_Kirikou", "R_Fionna", "R_Luc"};
-	return name[rand() % 10]; 
-}
 
 Zombie *zombieHorde(int N, std::string name)
 {
@@ -20,12 +12,10 @@ Zombie *zombieHorde(int N, std::string name)
 	Zombie *horde = new Zombie[N];
 	std::cout << std::endl;
 
-	srand(time(NULL));
-	horde[0].set_name(name);
-	int i = 1;
+	int i = 0;
 	while (i < N)
 	{
-		horde[i].set_name(randomName());
+		horde[i].set_name(name);
 		i++;
 	}
 	return horde;
