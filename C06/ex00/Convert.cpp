@@ -50,11 +50,15 @@ void Convert::find_type(void)
 		input.erase(0, 1);
 	if (input == "inff" || input == " inff" || input == "nanf")
 	{
+		if (input == " inff")
+			this->_input.erase(1, 1);
 		this->_type = FLOAT;
 		return;
 	}
 	if (input == "inf" || input == " inf" || input == "nan")
 	{
+		if (input == " inf")
+			this->_input.erase(1, 1);
 		this->_type = DOUBLE;
 		return;
 	}
@@ -85,16 +89,25 @@ void Convert::find_type(void)
 void Convert::print_type(void) 
 {
 	find_type();
-	if (this->_type == CHAR)
-		this->print_char();
-	else if (this->_type == INT)
-		this->print_int();
-	else if (this->_type == FLOAT)
-		this->print_float();
-	else if (this->_type == DOUBLE)
-		this->print_double();
-	else
-		std::cout << "Input type is invalid. Must be : CHAR or INT or FLOAT or DOUBLE" << std::endl;
+	int a = getType();
+	switch (a)
+	{
+		case 1:
+			this->print_char();
+			return;
+		case 2:
+			this->print_int();
+			return;
+		case 3: 
+			this->print_float();
+			return;
+		case 4:
+			this->print_double();
+			return;
+		default:
+			std::cout << "Input type is invalid. Must be : CHAR or INT or FLOAT or DOUBLE" << std::endl;
+			return;
+	}
 }
 
 void Convert::print_char(void) const
@@ -115,7 +128,7 @@ void Convert::print_int(void) const
 		return;
 	}
 	std::cout << "char: ";
-	if ( i < static_cast<int>(CHAR_MIN) || i > static_cast<int>(CHAR_MAX))
+	if (i < static_cast<int>(CHAR_MIN) || i > static_cast<int>(CHAR_MAX))	
 		std::cout << "impossible" << std::endl;
 	else
 	{
@@ -151,7 +164,7 @@ void Convert::print_float(void) const
 	}
 	
 	std::cout << "int: ";
-	if (f < static_cast<float>(INT_MIN) || f > static_cast<float>(INT_MAX) || this->_input  == "nanf")
+	if (f < static_cast<float>(std::numeric_limits<int>::min()) || f > static_cast<float>(INT_MAX) || this->_input  == "nanf")
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << static_cast<int>(f) << std::endl;
@@ -163,13 +176,15 @@ void Convert::print_float(void) const
 void Convert::print_double(void) const
 {
 	double d = strtod(this->_input.c_str(), NULL);
+	
 	if (errno == ERANGE)
 	{
 		std::cout << "Error DOUBLE: overflow or underflow" << std::endl;
 		return;
 	}
 	std::cout << "char: ";
-	if (d < static_cast<double>(CHAR_MIN) || d > static_cast<double>(CHAR_MAX) || this->_input == "nan")
+	if (d < static_cast<double>(CHAR_MIN) || d > static_cast<double>(CHAR_MAX)|| this->_input == "nan")
+	
 		std::cout << "impossible" << std::endl;
 	else
 	{
@@ -181,13 +196,14 @@ void Convert::print_double(void) const
 	}
 	
 	std::cout << "int: ";
-	if (d < static_cast<double>(INT_MIN) || d > static_cast<double>(INT_MAX) || this->_input == "nan")
+	if (d < static_cast<double>(INT_MIN) || d > static_cast<double>(INT_MAX) || this->_input  == "nan")
+	
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << static_cast<int>(d) << std::endl;
 	
 	std::cout << "float: ";
-	if (d < static_cast<double>(FLT_MIN) || d > static_cast<double>(FLT_MAX))
+	if (d < static_cast<double>(-FLT_MAX) || d > static_cast<double>(FLT_MAX))
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << static_cast<float>(d) << "f" << std::endl;

@@ -4,7 +4,9 @@
 #include <cstring>
 #include <string>
 #include <iostream>
-#include <climits> 
+#include <limits>
+#include <limits.h> 
+#include <float.h> 
 #include <iomanip>
 #include <cstdlib>
 #include <cfloat>
