@@ -1,49 +1,43 @@
-#include <iostream>
-#include <ctime>
-#include <cstdlib>
+#include "struct.hpp"
 
-struct Data {std::string s1; int n; std::string s2; };
-
-
-void * serialize(void)
+uintptr_t serialize(Data *ptr)
 {
-	std::srand(std::time(NULL));
-	
-	Data* data = new Data;
-	data->s1.resize(8);
-	data->n = std::rand();
-	data->s2.resize(8);
-	
-	std::string alnum("iabcdefghijklmnopqrstuvwxyz0123456789");
-	int i;
-	i = 0;
-	while (i < 8)
-	{
-		data->s1[i] = alnum[rand() % alnum.length()];
-		data->s2[i] = alnum[rand() % alnum.length()];
-		i++;
-	}
-	std::cout << "1/ Data randomly generate by seralize function (read from  Data * in serialize)" << std::endl;
-	std::cout << "s1: " << data->s1 << std::endl;
-	std::cout << "random int: " << data->n << std::endl;
-	std::cout << "s2: " << data->s2 << std::endl;
-	return reinterpret_cast<void*>(data);
+	return reinterpret_cast<uintptr_t>(ptr);
 }
 
-Data *deserialize(void * raw)
+Data *deserialize(uintptr_t raw)
 {
 	return reinterpret_cast<Data*>(raw);
 }
 
 int main()
 {
-	void* raw = serialize();
-	Data* data = deserialize(raw);
+	//CREATE A RANDOM DATA
+	Data* data = new Data;
+	data->s.resize(8);
+	data->n = std::rand();
+	std::srand(std::time(NULL));
+	std::string alnum("iabcdefghijklmnopqrstuvwxyz0123456789");
+	for(int i = 0; i < 8; i++)
+		data->s[i] = alnum[rand() % alnum.length()];
+	std::cout << "1/ Data randomly generate in the main" << std::endl;
+	std::cout << "data->s: " << data->s << std::endl;
+	std::cout << "data->int: " << data->n << std::endl;
+	std::cout << "data add: " << data << std::endl;
 	
-std::cout << std::endl << "2/ Same data deserialized (Data * --> void * -->Data*): " << std::endl;
-	std::cout << "s1: " << data->s1 << std::endl;
-	std::cout << "random int: " << data->n << std::endl;
-	std::cout << "s2: " << data->s2 << std::endl;
+	
+	//SERIALIZE
+	uintptr_t raw = serialize(data);
+	
+	std::cout << std::endl << "2/ Data serialized (Data * data --> uintptr_t raw )" << std::endl;
+	std::cout << "return value for serialized raw: " << raw << std::endl;
+
+	//DESERIALIZED
+	Data* data2 = deserialize(raw);
+std::cout << std::endl << "3/ Same data deserialized (uintptr_t raw --> Data* data2): " << std::endl;
+	std::cout << "data2->s: " << data2->s << std::endl;
+	std::cout << "data2->int: " << data2->n << std::endl;
+	std::cout << "data2 add: " << data2 << std::endl;
 	
 	delete data;
 	

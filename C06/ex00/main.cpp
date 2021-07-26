@@ -11,7 +11,6 @@ int main(int ac, char **av)
 	{
 		std::cout << std::setprecision(1) << std::fixed;
 		Convert pgm(av[1]);
-		pgm.find_type();
 		pgm.print_type();
 	}
 	return (0);

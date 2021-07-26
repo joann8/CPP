@@ -31,7 +31,7 @@ class Convert
 		std::string getInput(void) const;
 	
 		void find_type(void);
-		void print_type(void) const;
+		void print_type(void); 
 		void print_char(void) const;
 		void print_int(void) const;
 		void print_float(void) const;

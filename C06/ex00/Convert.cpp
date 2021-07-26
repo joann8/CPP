@@ -10,9 +10,8 @@ Convert::Convert(std::string input) : _type(NA), _input(input)
 	return;
 }
 
-Convert::Convert(Convert const & src)
+Convert::Convert(Convert const & src) : _type(src.getType()), _input(src.getInput())
 {
-	*this = src;
 	return;
 }
 
@@ -41,6 +40,7 @@ std::string Convert::getInput(void) const
 void Convert::find_type(void)
 {
 	std::string input = this->_input;
+
 	if (input.length() == 1 && std::isdigit(input[0]) == 0 && std::isprint(input[0]))
 	{
 		this->_type = CHAR;
@@ -82,8 +82,9 @@ void Convert::find_type(void)
 	return; //NA
 }
 
-void Convert::print_type(void) const
+void Convert::print_type(void) 
 {
+	find_type();
 	if (this->_type == CHAR)
 		this->print_char();
 	else if (this->_type == INT)
@@ -99,7 +100,7 @@ void Convert::print_type(void) const
 void Convert::print_char(void) const
 {
 	char c = (this->_input.c_str())[0];
-	std::cout << "char: " << c << std::endl;
+	std::cout << "char: \'" << c << "\'"<< std::endl;
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
 	std::cout << "float: " << static_cast<float>(c) << "f" <<  std::endl;
 	std::cout << "double: " << static_cast<double>(c) << std::endl;
@@ -120,7 +121,7 @@ void Convert::print_int(void) const
 	{
 		char c = static_cast<char>(i);
 		if (std::isprint(c))
-			std::cout << c << std::endl;
+			std::cout << "\'" << c << "\'"<< std::endl;
 		else
 			std::cout << "non displayable" << std::endl;
 	}
@@ -138,25 +139,25 @@ void Convert::print_float(void) const
 		return;
 	}
 	std::cout << "char: ";
-	if (f < static_cast<float>(CHAR_MIN) || f > static_cast<float>(CHAR_MAX))
+	if (f < static_cast<float>(CHAR_MIN) || f > static_cast<float>(CHAR_MAX) || this->_input == "nanf")
 		std::cout << "impossible" << std::endl;
 	else
 	{
 		char c = static_cast<char>(f);
 		if (std::isprint(c))
-			std::cout << c << std::endl;
+			std::cout << "\'" << c << "\'"<< std::endl;
 		else
 			std::cout << "non displayable" << std::endl;
 	}
 	
 	std::cout << "int: ";
-	if (f < static_cast<float>(INT_MIN) || f > static_cast<float>(INT_MAX))
+	if (f < static_cast<float>(INT_MIN) || f > static_cast<float>(INT_MAX) || this->_input  == "nanf")
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << static_cast<int>(f) << std::endl;
 	
 	std::cout << "float: " << f << "f" <<  std::endl;
-	std::cout << "float: " << static_cast<double>(f) << std::endl;
+	std::cout << "double: " << static_cast<double>(f) << std::endl;
 }
 
 void Convert::print_double(void) const
@@ -168,19 +169,19 @@ void Convert::print_double(void) const
 		return;
 	}
 	std::cout << "char: ";
-	if (d < static_cast<double>(CHAR_MIN) || d > static_cast<double>(CHAR_MAX))
+	if (d < static_cast<double>(CHAR_MIN) || d > static_cast<double>(CHAR_MAX) || this->_input == "nan")
 		std::cout << "impossible" << std::endl;
 	else
 	{
 		char c = static_cast<char>(d);
 		if (std::isprint(c))
-			std::cout << c << std::endl;
+			std::cout << "\'" << c << "\'"<< std::endl;
 		else
 			std::cout << "non displayable" << std::endl;
 	}
 	
 	std::cout << "int: ";
-	if (d < static_cast<double>(INT_MIN) || d > static_cast<double>(INT_MAX))
+	if (d < static_cast<double>(INT_MIN) || d > static_cast<double>(INT_MAX) || this->_input == "nan")
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << static_cast<int>(d) << std::endl;
