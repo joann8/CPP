@@ -136,7 +136,7 @@ void Convert::print_int(void) const
 		if (std::isprint(c))
 			std::cout << "\'" << c << "\'"<< std::endl;
 		else
-			std::cout << "non displayable" << std::endl;
+			std::cout << "Non displayable" << std::endl;
 	}
 	std::cout << "int: " << i << std::endl;
 	std::cout << "float: " << static_cast<float>(i) << "f" <<  std::endl;
@@ -160,11 +160,11 @@ void Convert::print_float(void) const
 		if (std::isprint(c))
 			std::cout << "\'" << c << "\'"<< std::endl;
 		else
-			std::cout << "non displayable" << std::endl;
+			std::cout << "Non displayable" << std::endl;
 	}
 	
 	std::cout << "int: ";
-	if (f < static_cast<float>(std::numeric_limits<int>::min()) || f > static_cast<float>(INT_MAX) || this->_input  == "nanf")
+	if (static_cast<long int>(f) < INT_MIN || static_cast<long int>(f) > INT_MAX || this->_input  == "nanf")
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << static_cast<int>(f) << std::endl;
@@ -192,11 +192,11 @@ void Convert::print_double(void) const
 		if (std::isprint(c))
 			std::cout << "\'" << c << "\'"<< std::endl;
 		else
-			std::cout << "non displayable" << std::endl;
+			std::cout << "Non displayable" << std::endl;
 	}
 	
 	std::cout << "int: ";
-	if (d < static_cast<double>(INT_MIN) || d > static_cast<double>(INT_MAX) || this->_input  == "nan")
+	if (static_cast<long int>(d) < INT_MIN || static_cast<long int>(d) > INT_MAX || this->_input  == "nan")
 	
 		std::cout << "impossible" << std::endl;
 	else
