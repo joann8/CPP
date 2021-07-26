@@ -11,7 +11,7 @@ int main()
 	std::cout << Jack;
 	Bureaucrat Lola("Lola", 146);
 	std::cout << Lola;
-	ShrubberyCreationForm Shu("Shu");
+	ShrubberyCreationForm Shu("TARGET");
 	std::cout << Shu;
 
 	std::cout << "---->1<-----" << std::endl;
@@ -31,7 +31,7 @@ int main()
 	std::cout << Jacky;
 	Bureaucrat Lolie("Lolie", 73);
 	std::cout << Lolie;
-	RobotomyRequestForm Rob("Rob");
+	RobotomyRequestForm Rob("TARGET");
 	std::cout << Rob;
 	std::cout << "---->1<-----" << std::endl;
 	Jacky.executeForm(Rob);
@@ -50,7 +50,7 @@ int main()
 	std::cout << Jacko;
 	Bureaucrat Lolo("Lolo", 26);
 	std::cout << Lolo;
-	PresidentialPardonForm Pres("Pres");
+	PresidentialPardonForm Pres("TARGET");
 	std::cout << Pres;
 	std::cout << "---->1<-----" << std::endl;
 	Jacko.executeForm(Pres);

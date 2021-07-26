@@ -14,7 +14,7 @@ Animal::Animal(std::string type) : _type(type)
 
 Animal::Animal(Animal const & src)
  {
- 	*this = src;
+	this->_type = src.getType();
  	std::cout << "An animal is born! (from copy)" << std::endl;
 	return ;
 }
@@ -38,6 +38,6 @@ std::string Animal::getType(void) const
 
 void Animal::makeSound(void) const
 {
-	std::cout << "*** Animal random sound ***" << std::endl;
+	std::cout << "~Animal random sound~" << std::endl;
 	return;
 }

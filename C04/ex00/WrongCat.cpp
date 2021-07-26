@@ -8,7 +8,7 @@ WrongCat::WrongCat(void) : WrongAnimal::WrongAnimal("WrongCat")
 
 WrongCat::WrongCat(WrongCat const & src) : WrongAnimal(src)
  {
- 	*this = src;
+ 	this->_type = src.getType();
  	std::cout << "A " << getType() << " is born. (from copy)" << std::endl;
 	return ;
 }

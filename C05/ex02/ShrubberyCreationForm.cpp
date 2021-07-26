@@ -38,11 +38,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat & b) const
 	std::ofstream out(filename.c_str());
 	if (out)
 	{
-		int i;
-		i = 0;
-		while (i < 2)
-		{
-			out << "         .     .  .      +     .      .          .\n"
+		out << "         .     .  .      +     .      .          .\n"
 				   "     .       .      .     #       .           .\n"
 				   "        .      .         ###            .      .      .\n"
 				   "      .      .   \"#:. .:##\"##:. .:#\"  .      .\n"
@@ -58,8 +54,6 @@ void ShrubberyCreationForm::execute(const Bureaucrat & b) const
 				   "            .     \"      000      \"    .     .\n"
 				   "       .         .   .   000     .        .       .\n"
 				   ".. .. ..................O000O........................ ...... ..." << std::endl;
-			i++;
-		}
 		out.close();
 	}
 	return;

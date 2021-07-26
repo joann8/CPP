@@ -25,21 +25,20 @@ int main()
 	std::cout << "Address brain A: " << a.getBrain() << std::endl;
 	std::cout << "Address brain B: " << b.getBrain() << std::endl;
 	std::cout << "Address brain C: " << c.getBrain() << std::endl;
-	
-	std::cout << "\n*********************\n Test Tab 10 animals\n\n";
-
 
 	unsigned int k;
 	unsigned int n;
 
-	std::cout << "Please enter a value for n (1 - 20): ";
-	std::cin >> n;
+	n = 6; //may be changed
+	
+	std::cout << "\n*********************\n Test Tab " << n << " animals\n\n";
+
 	while (n <= 0 || n > 20)
 	{
-		std::cout << "Wrong value" << std::endl;
-		std::cout << "Please enter a value for n (1 - 20): ";
-		std::cin >> n;
+		std::cout << "Wrong value (need an int : 1 - 20 )" << std::endl;
+		return (0);
 	}
+
 	const Animal* animal_tab[n];
 	k = 0;
 	while (k < n / 2)

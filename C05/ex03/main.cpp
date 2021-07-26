@@ -15,7 +15,7 @@ int main()
 	Form *form;
 
 	std::cout << "\n----> 1 - random <-----" << std::endl;
-	form = intern.makeForm("random", "Bender");
+	form = intern.makeForm("random", "TARGET");
 	if (form)
 	{
 		Jack.signForm(*form);
@@ -24,7 +24,7 @@ int main()
 	delete form;
 
 	std::cout << "\n----> 2 - Presidential Pardon <-----" << std::endl;
-	form = intern.makeForm("presidential pardon", "Bender");
+	form = intern.makeForm("presidential pardon", "TARGET");
 	if (form)
 	{
 		Jack.signForm(*form);
@@ -34,7 +34,7 @@ int main()
 	delete form;
 	
 	std::cout << "\n----> 3 - Shrubbery Creation <-----" << std::endl;
-	form = intern.makeForm("shrubbery creation", "Bender");
+	form = intern.makeForm("shrubbery creation", "TARGET");
 	if (form)
 	{
 		Jack.signForm(*form);

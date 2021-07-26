@@ -19,6 +19,12 @@ class Form
 			virtual const char * what() const throw();
 	};
 	
+	class AlreadySignedException : public std::exception
+	{
+		public:
+			virtual const char * what() const throw();
+	};
+	
 	public:
 		Form(std::string const & name, unsigned int grade_for_sign, unsigned int grade_for_execute);
 		Form(Form const & src);

@@ -8,7 +8,7 @@ Dog::Dog(void) : Animal::Animal("Dog")
 
 Dog::Dog(Dog const & src) : Animal(src)
  {
- 	*this = src;
+ 	this->_type = src.getType();
  	std::cout << "A " << getType() << " is born. (from copy)" << std::endl;
 	return ;
 }
@@ -22,7 +22,7 @@ Dog::~Dog(void)
 
 Dog & Dog::operator=(Dog const & src)
 {
-	this->Animal::_type = src.Animal::getType();
+	this->_type = src.getType();
 	return *this;
 }
 

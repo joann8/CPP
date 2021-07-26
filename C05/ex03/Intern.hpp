@@ -19,7 +19,6 @@ class Intern
 		};
 		
 		Intern(void);
-		Intern(std::string const & name, unsigned int grade);
 		Intern(Intern const & src);
 		virtual ~Intern(void);
 		Intern & operator=(Intern const & src);

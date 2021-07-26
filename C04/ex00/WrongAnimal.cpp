@@ -8,13 +8,13 @@
 
 WrongAnimal::WrongAnimal(std::string type) : _type(type)
  {
- 	std::cout << "A wrong animal is born!" << std::endl;
+ 	std::cout << "A wrong animal of type " << getType() << " is born!" << std::endl;
 	return ;
 }
 
 WrongAnimal::WrongAnimal(WrongAnimal const & src)
  {
- 	*this = src;
+ 	this->_type = src.getType();
  	std::cout << "A wrong animal is born! (from copy)" << std::endl;
 	return ;
 }
@@ -38,6 +38,6 @@ std::string WrongAnimal::getType(void) const
 
 void WrongAnimal::makeSound(void) const
 {
-	std::cout << "*** WrongAnimal random sound ***" << std::endl;
+	std::cout << "~WrongAnimal random sound~" << std::endl;
 	return;
 }

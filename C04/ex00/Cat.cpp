@@ -8,7 +8,7 @@ Cat::Cat(void) : Animal::Animal("Cat")
 
 Cat::Cat(Cat const & src) : Animal(src)
  {
- 	*this = src;
+ 	this->_type = getType();
  	std::cout << "A " << getType() << " is born. (from copy)" << std::endl;
 	return ;
 }
@@ -22,7 +22,7 @@ Cat::~Cat(void)
 
 Cat & Cat::operator=(Cat const & src)
 {
-	this->Animal::_type = src.Animal::getType();
+	this->_type = src.Animal::getType();
 	return *this;
 }
 
