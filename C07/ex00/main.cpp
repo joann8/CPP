@@ -15,7 +15,7 @@ int main(void)
     ::swap(a, b);
     std::cout << "swap(a, b)" << std::endl << "a = " << a << " | b = " << b <<std::endl;
     std::cout <<"min(a, b) = " << ::min(a,b) <<std::endl;
-    std::cout <<"max(a, b) = " << ::max(a,b) <<std::endl << std::endl << std::endl;
+    std::cout <<"max(a, b) = " << ::max(a,b) <<std::endl << std::endl;
 	
 	std::cout << "***CHAR***" << std::endl << "c1 = " << c1 << " | c2 = " << c2 <<std::endl;
     ::swap(c1, c2);

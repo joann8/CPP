@@ -51,7 +51,7 @@ class Array
 
 		unsigned int size(void) const { return this->_nb; } ;
 
-		T & operator[](unsigned int index)
+		T & operator[](unsigned int index) const
 		{
 			if (index >= this->size())
 				throw Array::OutOfLimitsException();
@@ -62,19 +62,5 @@ class Array
 		unsigned int _nb;
 		T*	_elmts;
 };
-
-template <typename T>
-std::ostream &operator<<(std::ostream &out, Array<T> const &src)
-{
-	out << "{";
-	for (unsigned int i = 0; i < src.size(); i++)
-	{
-		out << src[i];
-		if (i < src.size() - 1)
-			out << ", ";
-	}
-	out << "}";
-	return out;
-}
 
 #endif

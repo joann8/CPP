@@ -7,15 +7,15 @@
 template<typename T>
 void print_function(T const & src)
 {
-	std::cout << src << std::endl;
+	std::cout << "> " << src << std::endl;
 	return;
 }
 
 template <typename T>
-void iter(T const *arr, unsigned int len, void(ptr_f)(T const & src))
+void iter(T const arr[], unsigned int const len, void(*ptr_f)(T const & src))
 {
 	for (unsigned int i = 0; i < len; i++)
-		ptr_f(arr[i]);
+		(*ptr_f)(arr[i]);
 	return;
 }
 
