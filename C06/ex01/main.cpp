@@ -12,7 +12,7 @@ Data *deserialize(uintptr_t raw)
 
 int main()
 {
-	//CREATE A RANDOM DATA
+	//CREATE RANDOM DATA
 	Data* data = new Data;
 	data->s.resize(8);
 	data->n = std::rand();

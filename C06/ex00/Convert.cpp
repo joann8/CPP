@@ -203,7 +203,8 @@ void Convert::print_double(void) const
 		std::cout << static_cast<int>(d) << std::endl;
 	
 	std::cout << "float: ";
-	if (d < static_cast<double>(-FLT_MAX) || d > static_cast<double>(FLT_MAX))
+	if (this->_input != "inf" && this->_input != "+inf"
+	&& (d < static_cast<double>(-FLT_MAX) || d > static_cast<double>(FLT_MAX)))
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << static_cast<float>(d) << "f" << std::endl;

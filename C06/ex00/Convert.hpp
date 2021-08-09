@@ -2,11 +2,8 @@
 #define CONVERT_HPP
 
 #include <cstring>
-#include <string>
 #include <iostream>
-#include <limits>
 #include <limits.h> 
-#include <float.h> 
 #include <iomanip>
 #include <cstdlib>
 #include <cfloat>

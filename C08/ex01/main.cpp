@@ -73,7 +73,7 @@ int main()
 	std::cout << "Longest span : " << large_sp.longestSpan() << std::endl;
 	std::cout << std::endl;
 
-	std::cout << "\n*** Span(10000) ***" << std::endl;
+/*	std::cout << "\n*** Span(10000) ***" << std::endl;
 	Span extra_large_sp = Span(10000);
 	extra_large_sp.fill_vector();
 	std::cout << "Shortest span : " << extra_large_sp.shortestSpan() << std::endl;
@@ -88,6 +88,6 @@ int main()
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
-	}
+	}*/
 	return 0;
 }

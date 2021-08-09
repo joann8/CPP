@@ -108,8 +108,11 @@ int main()
 {
 	Base * base = generate();
 
-	identify_from_pointer(base);
-	identify_from_reference(*base);
+	Base &ref = *base;
+	Base *ptr = base;
+
+	identify_from_pointer(ptr);
+	identify_from_reference(ref);
 
 	delete base;
 }
